@@ -8,7 +8,7 @@ import BuyNowModal from "../buyNowModal/BuyNowModal";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 
-export default function ShoppingCart() {
+export default function Cart() {
 
   const cartItems = useSelector((state) => state.cart || []);
   console.log(cartItems)
@@ -38,7 +38,7 @@ const cartItemTotal = cartItems.map(item => item.quantity).reduce((prevValue, cu
 const cartTotal = cartItems.map(item => item.price * item.quantity).reduce((prevValue, currValue) => prevValue + currValue, 0);
 
 useEffect(() => {
-  localStorage.setItem('cart', JSON.stringify(cartSlice));
+  localStorage.setItem('cart', JSON.stringify(cartItems));
 }, [cartItems])
 
 // Buy Now Function
